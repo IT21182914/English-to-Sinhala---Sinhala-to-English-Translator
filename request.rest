@@ -1,0 +1,113 @@
+GET http://localhost:5050/savedWord/getSavedWord
+
+###
+
+POST http://localhost:5050/savedWord/saved
+Content-Type: application/json
+
+{
+  "inputLanguage": "Sinhala",
+  "outputLanguage": "English",
+  "textToTranslate": "Mother",
+  "translatedText": "අම්මා",
+  "createdAt": "2020-05-01T10:00:00.000Z"
+}
+
+###
+
+POST http://localhost:5050/users/login
+Content-Type: application/json
+
+{
+    "name" : "Kylle",
+    "password" :  "pass"
+}
+
+###
+GET http://localhost:5050/users/name
+
+###
+GET http://localhost:5050/bad
+
+
+
+###
+POST http://localhost:5050/bad/word
+Content-Type: application/json
+
+{
+    "name" : "Suppa",
+    "searchPhase" :  "cake shop"
+}
+
+
+###
+GET http://localhost:5050/bad/all
+
+
+###
+POST http://localhost:5050/bad/word
+Content-Type: application/json
+
+{
+    "params":{
+    "name" : "Kylle",
+    "textToTranslate" :  "Thisggggg is cake time"
+}}
+
+###
+DELETE  http://localhost:5050/bad/a
+Content-Type: application/json
+
+{
+    "ID" : "64fa2c3e1a1b5fe4c4ff68aa"    
+}
+
+
+###
+GET http://localhost:5050/bad/badpost
+Content-Type: application/json
+
+{
+    "params" : {"id" : "64fcb2b404a23c6f45980822" }
+}
+
+###
+GET http://localhost:5050/user/login
+Content-Type: application/json
+
+{
+    "email" : "admin@gmail.com",
+    "passwordHash" : "0000" 
+}
+
+
+# Feedback
+###
+POST http://localhost:5050/feedback/translation
+Content-Type: application/json
+
+{
+    "englishWord" : "hello", 
+    "sinhalaWord" : "fsf", 
+    "feedbackText" : "fsf"
+    
+}
+
+###
+GET http://localhost:5050/feedback/user
+Content-Type: application/json
+
+{
+   "userId" : "64fcb2b404a23c6f45980822"
+}
+
+#ok
+###
+PUT http://localhost:5050/feedback/
+Content-Type: application/json
+
+{
+    "params" : {"id" : "64fdb8b4b88fb3fc384d54b1" },
+    "feedbackText" : "rrrrrrrrrrr"
+}
