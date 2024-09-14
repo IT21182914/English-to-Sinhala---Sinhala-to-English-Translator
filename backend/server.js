@@ -48,5 +48,5 @@ app.use("/history", historyRouter);
 app.use("/savedWord", savedwordRouter);
 app.use("/checkout", checkoutRouter);
 app.listen(PORT, () => {
-  console.log(`Server is running on port: ${PORT}`);
+  console.log(`\nServer is running on port ${PORT} 🔥`);
 });
