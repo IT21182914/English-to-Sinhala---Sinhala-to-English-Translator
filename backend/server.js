@@ -17,7 +17,7 @@ import checkoutRouter from "./Routers/checkoutRouter.js";
 
 dotenv.config();
 
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT || 5000;
 const app = express();
 // const stripe = require('stripe')('YOUR_STRIPE_SECRET_KEY');
 
