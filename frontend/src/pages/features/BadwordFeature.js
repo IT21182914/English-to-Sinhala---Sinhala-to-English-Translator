@@ -11,7 +11,7 @@ export default function BadwordFeature(userId) {
 
     try {
       const posts = await axios
-        .get("http://localhost:5050/bad/badpost", {
+        .get("http://localhost:5000/bad/badpost", {
           params: id,
         })
         .then((response) => {
@@ -60,7 +60,9 @@ export default function BadwordFeature(userId) {
                     href="#"
                     className="block w-full cursor-pointer border-b border-gray-200 px-4 py-2 hover:bg-gray-100 hover:text-blue-700 focus:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-gray-500"
                   >
-                    <div className="font-sans text-base pb-2">Inappropriate term was detected :</div>
+                    <div className="font-sans text-base pb-2">
+                      Inappropriate term was detected :
+                    </div>
                     <div className="text-red-600 font-bold font-sans text-lg mb-7">
                       {item.badPhase}
                     </div>

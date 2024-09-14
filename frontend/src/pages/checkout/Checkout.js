@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useError } from "../../context/checkoutContext";
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 export default function Checkout() {
   // Get the object ID from the URL using useParams
@@ -34,7 +34,7 @@ export default function Checkout() {
     async function fetchData() {
       const id = params.id.toString();
       const response = await fetch(
-        `http://localhost:5050/membershipType/view/${params.id.toString()}`
+        `http://localhost:5000/membershipType/view/${params.id.toString()}`
       );
       if (!response.ok) {
         const message = `An error has occurred: ${response.statusText}`;
@@ -70,7 +70,7 @@ export default function Checkout() {
   const fetchMembershipData = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5050/membership/getMembershipDetails",
+        "http://localhost:5000/membership/getMembershipDetails",
         {
           email: user.email,
         }
@@ -87,7 +87,7 @@ export default function Checkout() {
     try {
       const token = localStorage.getItem("accessToken");
       const response = await axios
-        .post("http://localhost:5050/user/details", null, {
+        .post("http://localhost:5000/user/details", null, {
           headers: {
             authorization: `Bearer ${token}`,
           },
@@ -126,8 +126,8 @@ export default function Checkout() {
       // let email = user.email;
       // console.log(email);  //console print email correctly
       const response = await axios
-        .post("http://localhost:5050/membership/getMembershipDetails", {
-          //xhr.js:251     POST http://localhost:5050/membership/getMembershipDetails 400 (Bad Request)
+        .post("http://localhost:5000/membership/getMembershipDetails", {
+          //xhr.js:251     POST http://localhost:5000/membership/getMembershipDetails 400 (Bad Request)
           email: data,
         })
         .then((res) => {
@@ -174,7 +174,7 @@ export default function Checkout() {
       } else {
         try {
           const response = await axios.post(
-            "http://localhost:5050/membership/",
+            "http://localhost:5000/membership/",
             {
               email: user.email,
               name: form.name,
@@ -202,7 +202,6 @@ export default function Checkout() {
         activatingMembership();
 
         generatePDF();
-        
       });
 
       setCardData({
@@ -212,33 +211,31 @@ export default function Checkout() {
   };
 
   const generatePDF = () => {
-    const input = document.getElementById('pdf-content'); // Replace 'pdf-content' with the ID of the element you want to capture
-  
+    const input = document.getElementById("pdf-content"); // Replace 'pdf-content' with the ID of the element you want to capture
+
     html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
+      const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF();
       const imgWidth = 210; // A4 width
       const pageHeight = 297; // A4 height
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
       let heightLeft = imgHeight; // Change this to let
-  
+
       let position = 0;
-  
-      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+
+      pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
       heightLeft -= pageHeight;
-  
+
       while (heightLeft >= 0) {
         position = heightLeft - imgHeight;
         pdf.addPage();
-        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
         heightLeft -= pageHeight;
       }
-  
-      pdf.save('receipt.pdf');
 
+      pdf.save("receipt.pdf");
     });
   };
-  
 
   // const downloadPDF = () => {
   //   const doc = new jsPDF();
@@ -441,7 +438,10 @@ export default function Checkout() {
               </form>
             </div>
           </div>
-          <div id="pdf-content" className="relative col-span-full flex flex-col py-6 pl-8 pr-4 sm:py-12 lg:col-span-4 lg:py-24">
+          <div
+            id="pdf-content"
+            className="relative col-span-full flex flex-col py-6 pl-8 pr-4 sm:py-12 lg:col-span-4 lg:py-24"
+          >
             <h2 className="sr-only">Order summary</h2>
             <div>
               <img
@@ -469,7 +469,9 @@ export default function Checkout() {
                       </p>
                     </div>
                   </div>
-                  <p className="text-sm font-semibold text-white">{form.price}$</p>
+                  <p className="text-sm font-semibold text-white">
+                    {form.price}$
+                  </p>
                 </li>
               </ul>
               <div className="my-5 h-0.5 w-full bg-white bg-opacity-30"></div>
@@ -487,7 +489,8 @@ export default function Checkout() {
             <div className="relative mt-10 text-white">
               <h3 className="mb-5 text-lg font-bold">Support</h3>
               <p className="text-sm font-semibold">
-                +01 653 235 211 <span className="font-light">(International)</span>
+                +01 653 235 211{" "}
+                <span className="font-light">(International)</span>
               </p>
               <p className="mt-1 text-sm font-semibold">
                 support@seestranslator.com{" "}

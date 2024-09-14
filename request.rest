@@ -1,8 +1,8 @@
-GET http://localhost:5050/savedWord/getSavedWord
+GET http://localhost:5000/savedWord/getSavedWord
 
 ###
 
-POST http://localhost:5050/savedWord/saved
+POST http://localhost:5000/savedWord/saved
 Content-Type: application/json
 
 {
@@ -15,7 +15,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:5050/users/login
+POST http://localhost:5000/users/login
 Content-Type: application/json
 
 {
@@ -24,15 +24,15 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:5050/users/name
+GET http://localhost:5000/users/name
 
 ###
-GET http://localhost:5050/bad
+GET http://localhost:5000/bad
 
 
 
 ###
-POST http://localhost:5050/bad/word
+POST http://localhost:5000/bad/word
 Content-Type: application/json
 
 {
@@ -42,11 +42,11 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:5050/bad/all
+GET http://localhost:5000/bad/all
 
 
 ###
-POST http://localhost:5050/bad/word
+POST http://localhost:5000/bad/word
 Content-Type: application/json
 
 {
@@ -56,7 +56,7 @@ Content-Type: application/json
 }}
 
 ###
-DELETE  http://localhost:5050/bad/a
+DELETE  http://localhost:5000/bad/a
 Content-Type: application/json
 
 {
@@ -65,7 +65,7 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:5050/bad/badpost
+GET http://localhost:5000/bad/badpost
 Content-Type: application/json
 
 {
@@ -73,7 +73,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:5050/user/login
+GET http://localhost:5000/user/login
 Content-Type: application/json
 
 {
@@ -84,7 +84,7 @@ Content-Type: application/json
 
 # Feedback
 ###
-POST http://localhost:5050/feedback/translation
+POST http://localhost:5000/feedback/translation
 Content-Type: application/json
 
 {
@@ -95,7 +95,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:5050/feedback/user
+GET http://localhost:5000/feedback/user
 Content-Type: application/json
 
 {
@@ -104,7 +104,7 @@ Content-Type: application/json
 
 #ok
 ###
-PUT http://localhost:5050/feedback/
+PUT http://localhost:5000/feedback/
 Content-Type: application/json
 
 {

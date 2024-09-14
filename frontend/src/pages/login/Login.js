@@ -15,7 +15,7 @@ export default function Login() {
 
   const refreashToken = async () => {
     try {
-      const response = await axios.post("http://localhost:5050/user/refresh", {
+      const response = await axios.post("http://localhost:5000/user/refresh", {
         token: user.refreashToken,
       });
 
@@ -55,7 +55,7 @@ export default function Login() {
     console.log("submit");
     try {
       const response = await axios
-        .post("http://localhost:5050/user/login", {
+        .post("http://localhost:5000/user/login", {
           email,
           passwordHash,
         })
@@ -70,22 +70,21 @@ export default function Login() {
             setsuccess(true);
             seterror(false);
           }
-          console.log(res.data)
-          const {accessToken, refreshToken} = { ...res.data };
-          console.log(accessToken)
-          console.log(refreshToken)
+          console.log(res.data);
+          const { accessToken, refreshToken } = { ...res.data };
+          console.log(accessToken);
+          console.log(refreshToken);
           localStorage.setItem("accessToken", accessToken);
           localStorage.setItem("refreshToken", refreshToken);
 
           console.log(newUser.user.firstName);
-          if(newUser.user.lastName === "superadmin"){
-            console.log("i am adim")
+          if (newUser.user.lastName === "superadmin") {
+            console.log("i am adim");
             navigate("/adminController");
-          }else{
-            console.log("i am user")
+          } else {
+            console.log("i am user");
             navigate("/");
           }
-          
         });
     } catch (error) {
       seterror("Invalid email or password");

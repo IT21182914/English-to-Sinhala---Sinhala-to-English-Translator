@@ -23,8 +23,8 @@ export default function Registration() {
       return;
     }
     try {
-        console.log("heeee"+gender)
-      const response = await axios.post("http://localhost:5050/user", {
+      console.log("heeee" + gender);
+      const response = await axios.post("http://localhost:5000/user", {
         firstName,
         lastName,
         email,
@@ -36,7 +36,7 @@ export default function Registration() {
       console.log(response);
       navigation("/login");
     } catch (error) {
-      setError("Error with registration")
+      setError("Error with registration");
       console.log(error);
     }
   };
@@ -226,7 +226,9 @@ export default function Registration() {
               </button>
               <button
                 type="button"
-                onClick={() => {navigation("/login")}}
+                onClick={() => {
+                  navigation("/login");
+                }}
                 className="mt-2 flex w-full justify-center rounded-md bg-red-500 px-1.5 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Back
